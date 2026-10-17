@@ -1,0 +1,8 @@
+# Arch build artifacts
+src/
+pkg/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+
+# Generated kernel config backups
+config-*

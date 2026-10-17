@@ -1,0 +1,115 @@
+pkgbase = linux-mooly
+	pkgdesc = Linux BORE + Cachy Sauce + AutoFDO/Propeller Kernel by CachyOS - MooLy variant.
+	pkgver = 7.2.11
+	pkgrel = 1
+	url = https://github.com/CachyOS/linux-cachyos
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = bc
+	makedepends = binutils
+	makedepends = cpio
+	makedepends = gettext
+	makedepends = glibc
+	makedepends = libelf
+	makedepends = libgcc
+	makedepends = openssl
+	makedepends = pahole
+	makedepends = perl
+	makedepends = python
+	makedepends = rust
+	makedepends = rust-bindgen
+	makedepends = rust-src
+	makedepends = tar
+	makedepends = xxhash
+	makedepends = xz
+	makedepends = zlib
+	makedepends = zstd
+	makedepends = clang
+	makedepends = llvm
+	makedepends = lld
+	makedepends = git
+	options = !strip
+	options = !debug
+	options = !lto
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.2.11-1/cachyos-7.2.11-1.tar.gz
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.2.11-1/cachyos-7.2.11-1.tar.gz.asc
+	source = config
+	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.2/misc/dkms-clang.patch
+	source = git+https://github.com/cachyos/zfs.git#commit=71a9f9578616a90c3c14bb59629fb4d31bfd68d1
+	source = https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-615.71.09.tar.xz
+	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.2/misc/nvidia/0002-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch
+	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.2/misc/nvidia/0003-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch
+	source = git+https://gitlab.com/leogx9r/ryzen_smu.git#commit=e61177d0ddaebfaeca52094b20a2289287a0838b
+	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.2/sched/0001-bore-cachy.patch
+	validpgpkeys = E18447AC260021D31F3FF6C4C8A2A4774B8B63C4
+	validpgpkeys = E8B9AA39F054E30E8290D492C3C4820857F654FE
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = linux-mooly
+	pkgdesc = The Linux BORE + Cachy Sauce + AutoFDO/Propeller Kernel by CachyOS - MooLy variant. kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	optdepends = scx-scheds: to use sched-ext schedulers
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
+	provides = V4L2LOOPBACK-MODULE
+	provides = NTSYNC-MODULE
+	provides = VHBA-MODULE
+	provides = ADIOS-MODULE
+	provides = linux-cachyos-lto=7.2.11-1
+	replaces = linux-cachyos-lto
+
+pkgname = linux-mooly-headers
+	pkgdesc = Headers and scripts for building modules for the Linux BORE + Cachy Sauce + AutoFDO/Propeller Kernel by CachyOS - MooLy variant. kernel
+	depends = binutils
+	depends = glibc
+	depends = libelf
+	depends = libgcc
+	depends = openssl
+	depends = pahole
+	depends = xxhash
+	depends = zlib
+	depends = zstd
+	depends = linux-mooly
+	depends = clang
+	depends = llvm
+	depends = lld
+	provides = LINUX-HEADERS
+	provides = linux-cachyos-lto-headers=7.2.11-1
+	replaces = linux-cachyos-lto-headers
+
+pkgname = linux-mooly-zfs
+	pkgdesc = zfs module for the Linux BORE + Cachy Sauce + AutoFDO/Propeller Kernel by CachyOS - MooLy variant. kernel
+	license = CDDL
+	depends = pahole
+	depends = linux-mooly=7.2.11-1
+	provides = ZFS-MODULE
+
+pkgname = linux-mooly-nvidia-open
+	pkgdesc = nvidia open modules of 615.71.09 driver for the linux-mooly kernel
+	license = MIT AND GPL-2.0-only
+	depends = linux-mooly=7.2.11-1
+	depends = nvidia-utils=615.71.09
+	depends = libglvnd
+	provides = NVIDIA-MODULE
+	conflicts = linux-mooly-nvidia
+
+pkgname = linux-mooly-ryzen-smu
+	pkgdesc = ryzen_smu module for the linux-mooly kernel (AMD OC/OV support)
+	license = GPL-2.0-only
+	depends = linux-mooly=7.2.11-1
+	provides = RYZEN-SMU-MODULE
